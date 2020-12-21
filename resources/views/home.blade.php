@@ -19,6 +19,9 @@
             </div>
 
             <div class="card">
+                <x-alert>
+                    Here is a response from image upload
+                </x-alert>
                   <div class="card-body">
                     <form method="post" action="/upload" enctype="multipart/form-data">
                         @csrf

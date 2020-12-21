@@ -10,25 +10,37 @@ use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
 
+    // public function uploadAvatar(Request $request) {
+
+    //     if($request->hasFile('image')) {
+
+    //         $filename = $request->image->getClientOriginalName();
+
+    //         if(auth()->user()->avatar)
+    //         {
+    //             Storage::delete('/public/images/'.auth()->user()->avatar);
+    //         }
+
+    //       // $request->image->store('images', 'public');
+    //        $request->image->storeAs('images', $filename, 'public');
+    //        //$request->image->move('custom-images/', $filename);
+    //        // Auth::user()->update(['avatar' => $filename]);
+    //        auth()->user()->update(['avatar' => $filename]);
+    //       return redirect()->back();
+    //     }
+    // }
+
     public function uploadAvatar(Request $request) {
 
         if($request->hasFile('image')) {
-
-            $filename = $request->image->getClientOriginalName();
-
-            if(auth()->user()->avatar)
-            {
-                Storage::delete('/public/images/'.auth()->user()->avatar);
-            }
-
-          // $request->image->store('images', 'public');
-           $request->image->storeAs('images', $filename, 'public');
-           //$request->image->move('custom-images/', $filename);
-           // Auth::user()->update(['avatar' => $filename]);
-           auth()->user()->update(['avatar' => $filename]);
-          return redirect()->back();
+          User::uploadAvatar($request->image);
+         // $request->session()->flash('message','Image uploaded successfully');
+          return redirect()->back()->with('message','Image uploaded successfully'); // success
         }
+       // $request->session()->flash('error','Image not uploaded');
+        return redirect()->back()->with('error','Image not uploaded'); //error
     }
+
 
     public function index() {
 
