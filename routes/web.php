@@ -7,12 +7,19 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
+
+
 // todos routes
-Route::get('/todos', [TodoController::class, 'index'])->name('todos.index');
-Route::get('/todos/create', [TodoController::class, 'create']);
-Route::post('/todos/create', [TodoController::class, 'store']);
-Route::get('/todos/{todo}/edit', [TodoController::class, 'edit']);
-Route::patch('/todos/{todo}/update', [TodoController::class, 'update'])->name('todo.update');
+// Route::middleware('auth')->group(function() {
+// });
+
+Route::resource('/todos', TodoController::class);
+Route::put('/todos/{todo}/complete', [TodoController::class, 'complete'])->name('todos.complete');
+Route::delete('/todos/{todo}/incomplete', [TodoController::class, 'incomplete'])->name('todos.incomplete');
+
+
+
 
 
 Route::get('/', function () {

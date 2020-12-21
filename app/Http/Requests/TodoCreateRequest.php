@@ -24,7 +24,7 @@ class TodoCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:10'
+            'title' => 'required|max:50'
         ];
     }
 
@@ -32,7 +32,7 @@ class TodoCreateRequest extends FormRequest
      {
               return [
                      'title.required' => 'A todo title is mandatory, value required',
-                     'title.max' => 'Length of todo can be only max of 10'
+                     'title.max' => 'Length of todo can be only max of 50'
 
               ];
    }

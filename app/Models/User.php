@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
@@ -74,6 +75,12 @@ class User extends Authenticatable
         {
             Storage::delete('/public/images/'.$this->avatar);
         }
+
+    }
+
+    public function todos()
+    {
+        return $this->hasMany(Todo::class);
     }
 
 

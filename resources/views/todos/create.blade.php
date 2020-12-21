@@ -8,7 +8,7 @@
 
         <p class="text-2xl">Create Todo</p>
 
-     <form method="post" action="/todos/create" class="py-5">
+     <form method="post" action="{{route('todos.store')}}" class="py-5">
          @csrf
          <div class="mb-3">
            <label for="exampleInputEmail1" class="form-label">Title</label>
@@ -18,7 +18,7 @@
        </form>
     </div>
     <div>
-        <a class="mx-2 py-2 px-1 bg-blue-300  cursor-pointer text-white rounded" href="/todos">View All Todos</a>
+        <a class="mx-2 py-2 px-1 bg-blue-300  cursor-pointer text-white rounded" href="{{route('todos.index')}}">View All Todos</a>
     </div>
 </div>
 @endsection
